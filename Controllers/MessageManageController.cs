@@ -83,14 +83,20 @@ namespace postArticle.Controllers
 
                         db.Messages.Add(message);
 
-                        if (db.SaveChanges() > 0)
-                        {
-                            return Json(new { success = true, ms });
+                        try {
+
+                            if (db.SaveChanges() > 0)
+                            {
+                                return Json(new { success = true, ms });
+                            }
                         }
-                        else
+
+                        catch
                         {
                             return Json(new { success = false });
                         }
+
+
                     }
                 }
                 TempData["Display"] = articleDetailsViewModel.Display;

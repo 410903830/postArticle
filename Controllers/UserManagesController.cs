@@ -192,6 +192,7 @@ namespace postArticle.Controllers
                     registerViewModel.userManage.UserType = "Member";
                     registerViewModel.userManage.Status = 0;
                     registerViewModel.userManage.Email = (string)Session["UserEmail"];
+                    registerViewModel.userManage.UserInfo = null;
 
 
                     db.UserManages.Add(registerViewModel.userManage);
