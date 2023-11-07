@@ -46,7 +46,7 @@ namespace postArticle.Controllers
             IEnumerable<Article> articles;
             //--------搜尋--------
             bool IsShowSearch = articleIndexViewModel.IsShowSearch;
-            string searchString;
+            string searchString="";
             //-------文章分類------
             string ClassificationString;
             string OrderString;
@@ -204,9 +204,12 @@ namespace postArticle.Controllers
             //搜尋
             void Search()
             {
-                if (IsShowSearch && articleIndexViewModel.ShowSearch == null)
+                ModelState.Clear();
+
+                if (articleIndexViewModel.ShowSearch == null)
                 {
-                    searchString = "";
+                    articles = articles.Where(s=>s.Status != 1);
+                    System.Diagnostics.Debug.WriteLine("search");
                 }
                 else if (articleIndexViewModel.ShowSearch != null)
                 {
