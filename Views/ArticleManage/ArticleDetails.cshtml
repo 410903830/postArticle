@@ -704,15 +704,20 @@
 
     //將檢舉文章內容整理成字串
      function report() {
-        var reportname = document.forms[0];
+        
         var reportadd = document.getElementById("report_other");
         var txt = "";
-        for (var i = 0; i < reportname.length; i++) {
-            if (reportname[i].checked) {
-                txt = txt + reportname[i].value +"  ";
-            }
-        }
+
+         const checkboxes = document.querySelectorAll('input[name="report"]:checked');
+         const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
+         if (selectedValues.length > 0) {
+             txt = selectedValues.join(", ")
+         }
+
+
+
          txt = txt + reportadd.value;
+         alert(txt);
          return txt;
     };
 
