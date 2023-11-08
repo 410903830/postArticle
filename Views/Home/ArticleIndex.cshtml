@@ -37,12 +37,12 @@
         font-size: 16px;
         border: 1px solid #ccc;
         border-radius: 4px;
-        background-color: #fff;
+        background-color:#fff;
         color: #333;
     }
 
         #classificationDropdown option, #classificationDropdown2 option {
-            background-color: #fff;
+            background-color: #cbf9b5;
             font-size: 16px;
         }
 
@@ -53,10 +53,10 @@
     .btnn {
         width: 100%;
         margin-top: 25px;
-        font-size:16px;
+        font-size: 16px;
         border: none;
         border-radius: 4px;
-        background-color: #fff;
+        background-color: #97CD7D;
         color: #333;
     }
 
@@ -174,14 +174,15 @@
     }
 </style>
 
+<div style="margin-top:80px;"></div>
 
-<p style="font-size: 20px; margin-top: 60px; color: #216f24; font-weight: bold; ">使用者:@Model.userName</p>
+<p style="position:absolute; font-size: 20px;  color: #216f24; font-weight: bold; ">使用者:@Model.userName</p>
 
 
 @using (Html.BeginForm("ArticleIndex", "Home", FormMethod.Post, new { id = "SelectPanel" }))
 {
 
-    <div style="position:absolute; right:6.5%;  white-space:nowrap;">
+    <div style="position:absolute; right:6.5%;">
         <div id="search-input" style="width:300px; white-space:nowrap">
             @Html.TextBoxFor(model => model.ShowSearch, new { id = "SearchInput", value = Model.ShowSearch, placeholder = "輸入關鍵字" })
             <div id="search-button" style="position:absolute; right:15px; top:5px;">
@@ -279,7 +280,7 @@
                     if (item.ArticleType == "是")
                     {
                         <div class="container">
-                            <div class="row justify-content-evenly" id="article-item" style="background-color:#fff;">
+                            <div class="row justify-content-evenly" id="article-item" style="background-color: rgb(151 205 125 / 0.50); border-left: 50px solid rgb(75 151 78 / 0.60); ">
                                 <div class="col-xl-6">
                                     <div style="color: #888; font-size: 15px; font-weight:bolder;">--專業文章--</div>
                                     <div class="article-title">
@@ -344,7 +345,7 @@
                     else
                     {
                         <div class="container">
-                            <div class="row justify-content-evenly" id="article-item" style="background-color:#fff">
+                            <div class="row justify-content-evenly" id="article-item" style="background-color:rgb(151 205 125 / 0.50);">
                                 <div class="col-xl-6">
                                     <div style="color: #888; font-size: 15px; font-weight:bolder;">--會員文章--</div>
                                     <div class="article-title">
