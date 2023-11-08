@@ -29,5 +29,6 @@ namespace postArticle.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExpertAnswer> ExpertAnswers { get; set; }
         public virtual UserManage UserManage { get; set; }
+        public virtual UserManage UserManage1 { get; set; }
     }
 }

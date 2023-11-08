@@ -34,6 +34,7 @@ namespace postArticle.Models
         public Nullable<System.DateTime> Time { get; set; }
         public int Status { get; set; }
     
+        public virtual UserManage UserManage { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Collect> Collects { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -42,6 +43,5 @@ namespace postArticle.Models
         public virtual ICollection<Message> Messages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report> Reports { get; set; }
-        public virtual UserManage UserManage { get; set; }
     }
 }

@@ -639,8 +639,6 @@
                 data: { moodcontext: text },
                 success: function (result) {
 
-                    alert("成功" + text);
-
                 },
                 error: function () {
 
@@ -727,10 +725,10 @@
         labels: [happy + "開心", badmood + "不開心", cry + "難過", angry + "憤怒" ],
         datasets: [{
             data: [@ViewBag.happyCount, @ViewBag.unhappyCount, @ViewBag.sadCount, @ViewBag.angryCount],
-            backgroundColor: ['#f564', 'green', 'blue', 'red']
+            backgroundColor: ['#FFFF77', '	#77DDFF', '#0044BB', '#CC0000']
         }]
     };
-
+    
     //創建圓餅圖
     var myPieChart = new Chart(ctx, {
         type: 'pie',

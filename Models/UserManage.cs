@@ -32,8 +32,8 @@ namespace postArticle.Models
             this.Notifications = new HashSet<Notification>();
             this.Reports = new HashSet<Report>();
             this.ReportMembers = new HashSet<ReportMember>();
-            this.ReportMembers1 = new HashSet<ReportMember>();
             this.UserQuestions = new HashSet<UserQuestion>();
+            this.UserQuestions1 = new HashSet<UserQuestion>();
         }
 
         public int UserID { get; set; }
@@ -59,7 +59,7 @@ namespace postArticle.Models
         public Nullable<int> Status { get; set; }
         public Nullable<int> ExpertExperience { get; set; }
         public string UserInfo { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Article> Articles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -88,10 +88,10 @@ namespace postArticle.Models
         public virtual ICollection<Report> Reports { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReportMember> ReportMembers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReportMember> ReportMembers1 { get; set; }
         public virtual ThanksfulThing ThanksfulThing { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserQuestion> UserQuestions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserQuestion> UserQuestions1 { get; set; }
     }
 }

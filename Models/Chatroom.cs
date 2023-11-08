@@ -27,8 +27,8 @@ namespace postArticle.Models
         public Nullable<int> OtherUserID { get; set; }
     
         public virtual UserManage UserManage { get; set; }
-        public virtual UserManage UserManage1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChatroomLog> ChatroomLogs { get; set; }
+        public virtual UserManage UserManage1 { get; set; }
     }
 }
