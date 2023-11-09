@@ -183,7 +183,7 @@ namespace postArticle.Controllers
                     switch (OrderString)
                     {
                         case "時間":
-                            articles = articles.Where(s=>s.Status!=1).OrderBy(s => s.Time);
+                            articles = articles.Where(s=>s.Status!=1).OrderByDescending(s => s.Time);
                             break;
                         case "人氣":
                             articles = articles.Where(s=>s.Status!=1).OrderByDescending(s => s.Likes);

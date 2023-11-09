@@ -7,7 +7,7 @@
 
 
 @{
-    ViewBag.Title = "ExpertAnser";
+    ViewBag.Title = "專家回答";
 }
 
 @{
@@ -129,6 +129,7 @@
 
             //找到這個欄位的wait id
             $waitElement = $(this).closest(".Question").find("#wait");
+            $thiscardbody = $(this).closest(".Question").find(".card-body");
             var input = $(this).siblings(".context");
             var userQuestionID = $(this).siblings(".userQuestionID").val();
             var userEmail = $(this).siblings(".userEmail").val();
@@ -143,8 +144,6 @@
             var inputValue = input.val();
             input.val("");
             var data = inputValue;
-
-            alert(userContext);
 
 
             if (inputValue !== "") {
@@ -161,7 +160,7 @@
                         var Time = data.send.Time;
 
 
-                        var cardBody = $('#card-body');
+                        var cardBody = $thiscardbody;
                         var card = $('<div>').addClass('card Question-info');
                         var nameSpan = $('<span>').text("專家 "+Name).css({ 'font-size': '20px', 'font-weight': '900', 'margin': '5px 0 0 5px' });
                         var answerSpan = $('<span>').text(Anser).css({ 'font-size': '18px', 'margin': '5px 0 0 5px'});

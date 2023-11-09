@@ -607,7 +607,7 @@ namespace postArticle.Controllers
         {
 
             int UserID = GetUserID();
-            var time = DateTime.Now.ToString("M");
+            var time = DateTime.UtcNow.AddHours(08).ToString("g");
             var moodcontext = Request.Form["moodcontext"];
 
 
@@ -616,7 +616,7 @@ namespace postArticle.Controllers
 
             var recorddb = db.Moods;
 
-            var record = recorddb.Where(m => m.UserID == UserID).ToList().Where(m => m.Time.ToString("M") == time).ToList();
+            var record = recorddb.Where(m => m.UserID == UserID).ToList().Where(m => m.Time.ToString("g") == time).ToList();
 
             //如果心情紀錄不等於空則更新Mood
             if (record.Count > 0)
@@ -634,7 +634,7 @@ namespace postArticle.Controllers
                 var newMood = new Mood
                 {
                     UserID = UserID,
-                    Time = DateTime.Now,
+                    Time = DateTime.UtcNow.AddHours(08),
                     Mood1 = moodcontext
                 };
 

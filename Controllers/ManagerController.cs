@@ -28,7 +28,7 @@ namespace postArticle.Controllers
         public ActionResult UserMange(String search, int?page)
         {
 
-            int PageSize = 10;
+            int PageSize = 8;
             int PageNumber = (page ?? 1);
             var pushdb = db.UserManages.Where(m=>m.UserType!="Admin").ToList();
             var Name1 = pushdb.ToList().OrderBy(m => m.Status);
@@ -120,7 +120,7 @@ namespace postArticle.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Resize([Bind(Include = "UserID, UserName, Account, Password, Email, UserType, Status, Birthday, ExpertExperience, UserInfo")] UserManage emp)
+        public ActionResult Resize([Bind(Include = "UserID, UserName, Account, Password, Email, UserType, LevelValue,Status, Birthday, ExpertExperience, UserInfo")] UserManage emp)
         {
 
             if (ModelState.IsValid)

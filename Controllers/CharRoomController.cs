@@ -87,6 +87,9 @@ namespace postArticle.Controllers
 
                 Expert();
 
+                CMV.UserManages = db.UserManages;
+
+
                 return View(CMV);
             }
 
@@ -256,14 +259,14 @@ namespace postArticle.Controllers
             }
 
 
-            ChatroomLog newMessage = new ChatroomLog { UserID = UserID, ChatroomID = ChatRoomID, Content = Content, Time = DateTime.Now };
+            ChatroomLog newMessage = new ChatroomLog { UserID = UserID, ChatroomID = ChatRoomID, Content = Content, Time = DateTime.UtcNow.AddHours(08)};
             db.ChatroomLogs.Add(newMessage);
             try
             {
                 db.SaveChanges();
                 CR.UserName = UserName;
                 CR.inputContext = Content;
-                CR.inputTime = DateTime.Now.ToString("g");
+                CR.inputTime = DateTime.UtcNow.AddHours(08).ToString("g");
                 return Json(new { success = true, CR });
             }
             catch {

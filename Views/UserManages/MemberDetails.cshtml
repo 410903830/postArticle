@@ -200,6 +200,20 @@
         line-height: 20px;
         color: #000;
     }
+
+    .circle-avatar img {
+        position: absolute;
+        top: -10px;
+        right: 0;
+        left: 0;
+        bottom: 0; /* 將圖片固定在父層的大小 */
+        width: 100%;
+        height: 100%; /* 高和寬都填滿容器 */
+        object-fit: cover; /* 和background-image設定background-size: cover一樣，圖片剛好填滿 */
+        object-position: center;
+    }
+
+ 
     /****************************************************/
 
 </style>
@@ -264,7 +278,7 @@
 
     <div class="window_content" style="margin-top:50px;">
         <div style="position: relative; float: left;  margin: 15px 0 0 3%;">
-            <div class="circle-avatar">
+            <div class="circle-avatar" style="width:100px; height:100px; overflow:hidden; ">
                 <img src="@GetAvatarByLevel(Model.UserManagesDetail.LevelValue)" alt="Your Image" class="rounded-image" />
             </div>
 
@@ -272,31 +286,32 @@
             @functions {
                 public string GetAvatarByLevel(int levelValue)
                 {
+
                     switch (levelValue)
                     {
                         case 0:
-                            return Url.Content("~/Image/level0.png");
+                            return Url.Content("/Image/level0.png");
                         case 1:
-                            return Url.Content("~/Image/level1.png");
+                            return Url.Content("/Image/level1.png");
                         case 2:
-                            return Url.Content("~/Image/level2.jpg");
+                            return Url.Content("/Image/level2.jpg");
                         case 3:
-                            return Url.Content("~/Image/level3.jpg");
+                            return Url.Content("/Image/level3.jpg");
                         case 4:
-                            return Url.Content("~/Image/level4.jpg");
+                            return Url.Content("/Image/level4.jpg");
                         case 5:
-                            return Url.Content("~/Image/level5.jpg");
+                            return Url.Content("/Image/level5.jpg");
                         case 6:
-                            return Url.Content("~/Image/level6.jpg");
+                            return Url.Content("/Image/level6.jpg");
                         case 7:
-                            return Url.Content("~/Image/level7.jpg");
+                            return Url.Content("/Image/level7.jpg");
                         default:
-                            return Url.Content("~/Image/level0.png"); // 默認
+                            return Url.Content("/Image/level0.png");
                     }
                 }
             }
 
-            <div style="position: relative; text-align: center; margin: 0 auto;">
+            <div style="position: relative; text-align: center; margin: 0 auto; ">
                 <strong>
                     @Model.UserManagesDetail.UserName
                 </strong>

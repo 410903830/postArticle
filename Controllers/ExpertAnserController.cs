@@ -55,12 +55,13 @@ namespace postArticle.Controllers
             int QuestionID = int.Parse(Request.Form["QuestionID"]);
             string UQEmail = Request.Form["UQEmail"];
             string UQcontext = Request.Form["UQcontext"];
+    
 
 
 
             if (Session["UserID"] != null)
             {
-                ExpertAnswer Reponse = new ExpertAnswer { QuestionID = QuestionID, UserID = UserID, AnswerContent = AnserContext, AnswerTime = DateTime.Now };
+                ExpertAnswer Reponse = new ExpertAnswer { QuestionID = QuestionID, UserID = UserID, AnswerContent = AnserContext, AnswerTime = DateTime.UtcNow.AddHours(08)};
                 db.ExpertAnswers.Add(Reponse);
 
                 if (db.SaveChanges() > 0)
@@ -70,7 +71,7 @@ namespace postArticle.Controllers
                     ExpertAnser send = new ExpertAnser();
                     send.Name = db.UserManages.Find(UserID).UserName;
                     send.Anser = AnserContext;
-                    send.Time = DateTime.Now.ToString("d");
+                    send.Time = DateTime.Now.ToString("g");
 
                     //專家解答加經驗
                     var Experience = db.UserManages.Find(UserID);

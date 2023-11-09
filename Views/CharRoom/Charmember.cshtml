@@ -5,7 +5,7 @@
 
 
 @{
-    ViewBag.Title = "Charmember";
+    ViewBag.Title = "聊天室";
     var UserID = Model.UserID;
     var UserName = Model.UserName;
     var Expert = Model.Expert;
@@ -13,6 +13,7 @@
     var Friend = Model.ChatRoom;
     var SearchMemberChatRoom = Model.SMChatRoom;
     var ExpertMemberChatRoom = Model.EChatRoom;
+    var UserMange = Model.UserManages.ToList();
 }
 
 
@@ -106,7 +107,41 @@
 
 
             <div style="width:150px; margin-left:20px; display:inline-block; ">
-                <a class="Expert" title="會員: @item.UserName @chatroomid" value="@chatroomid" onclick="IsChatroom(@otherid, @chatroomid)"><img src="~/Uploads/Expert.png"></a>
+                <a class="Expert" title="搜尋: @item.UserName" value="@chatroomid" onclick="IsChatroom(@otherid, @chatroomid)">
+
+
+                    @{
+                        switch (item.LevelValue)
+                        {
+
+                            case 1:
+                                @: <img src="@Url.Content("~/Image/level1.png")">
+                                break;
+                            case 2:
+                                @: <img src="@Url.Content("~/Image/level2.jpg")">
+                                break;
+                            case 3:
+                                @: <img src="@Url.Content("~/Image/level3.jpg")">
+                                break;
+                            case 4:
+                                @: <img src="@Url.Content("~/Image/level4.jpg")">
+                                break;
+                            case 5:
+                                @: <img src="@Url.Content("~/Image/level5.jpg")">
+                                break;
+                            case 6:
+                                @: <img src="@Url.Content("~/Image/level6.jpg")">
+                                break;
+                            case 7:
+                                @: <img src="@Url.Content("~/Image/level7.jpg")">
+                                break;
+                            default:
+                                @: <img src="@Url.Content("~/Image/level0.png")">
+                                break;
+                        }
+                    }
+
+                </a>
                 <p style="text-align:center; font-size:20px; font-weight:bolder;">@item.UserName</p>
             </div>
 
@@ -148,7 +183,44 @@
 
 
             <div style="width:150px; margin-left:20px; display:inline-block; ">
-                    <a class="Expert Room" title="專家: @item.UserName" value="" onclick="IsChatroom(@ExpertID ,@chatroomid)"><img src="~/Uploads/Expert.png"></a>
+                <a class="Expert Room" title="專家: @item.UserName" value="" onclick="IsChatroom(@ExpertID ,@chatroomid)">
+
+
+
+                    @{
+                        switch (item.LevelValue)
+                        {
+
+                            case 1:
+                                @: <img src="@Url.Content("~/Image/level1.png")">
+                                break;
+                            case 2:
+                                @: <img src="@Url.Content("~/Image/level2.jpg")">
+                                break;
+                            case 3:
+                                @: <img src="@Url.Content("~/Image/level3.jpg")">
+                                break;
+                            case 4:
+                                @: <img src="@Url.Content("~/Image/level4.jpg")">
+                                break;
+                            case 5:
+                                @: <img src="@Url.Content("~/Image/level5.jpg")">
+                                break;
+                            case 6:
+                                @: <img src="@Url.Content("~/Image/level6.jpg")">
+                                break;
+                            case 7:
+                                @: <img src="@Url.Content("~/Image/level7.jpg")">
+                                break;
+                            default:
+                                @: <img src="@Url.Content("~/Image/level0.png")">
+                                break;
+                        }
+                    }
+
+
+
+                </a>
                     <p style="text-align:center; font-size:20px; font-weight:bolder;">@item.UserName</p>
             </div>
            
@@ -179,7 +251,64 @@
         var title = item.ChatRoomName;
 
         <div style="width:150px; margin-left:20px; display:inline-block; ">
-            <a class="Expert Room" title="專家: @removename" value="" onclick="IsChatroom(0,@item.ChatroomID)"><img src="~/Uploads/Expert.png"></a>
+            <a class="Expert Room" title="好友: @removename" value="" onclick="IsChatroom(0,@item.ChatroomID)">
+
+
+
+                @{
+
+                    string MainName = UserMange.Find(m => m.UserID == item.UserID).UserName;
+                    int SUID = item.UserID.Value;
+
+                    if (UserMange.Find(m => m.UserID == SUID).UserName == MainName)
+                    {
+                        SUID = item.OtherUserID.Value;
+                    }
+                    else
+                    {
+                        SUID = item.UserID.Value;
+                    }
+
+
+
+
+
+                    switch (UserMange.Find(m=>m.UserID == SUID).LevelValue)
+                    {
+
+                        case 1:
+                            @: <img src="@Url.Content("~/Image/level1.png")">
+                            break;
+                        case 2:
+                            @: <img src="@Url.Content("~/Image/level2.jpg")">
+                            break;
+                        case 3:
+                            @: <img src="@Url.Content("~/Image/level3.jpg")">
+                            break;
+                        case 4:
+                            @: <img src="@Url.Content("~/Image/level4.jpg")">
+                            break;
+                        case 5:
+                            @: <img src="@Url.Content("~/Image/level5.jpg")">
+                            break;
+                        case 6:
+                            @: <img src="@Url.Content("~/Image/level6.jpg")">
+                            break;
+                        case 7:
+                            @: <img src="@Url.Content("~/Image/level7.jpg")">
+                            break;
+                        default:
+                            @: <img src="@Url.Content("~/Image/level0.png")"> 
+                            break;
+                    }
+                }
+
+
+
+
+
+
+            </a>
             <p style="text-align:center; font-size:20px; font-weight:bolder;">@removename</p>
         </div>
 

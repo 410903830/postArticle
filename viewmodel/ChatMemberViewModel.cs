@@ -35,5 +35,7 @@ namespace postArticle.viewmodel
         //搜尋使用者
         public IEnumerable<UserManage> SearchMember { get; set; }
 
+        public IEnumerable<UserManage> UserManages { get; set; }
+
     }
 }

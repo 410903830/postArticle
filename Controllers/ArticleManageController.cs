@@ -466,7 +466,7 @@ namespace postArticle.Controllers
                     //新增文件
                     articlePost.article.ImageURL = "index.png";
                     // 获取当前时间
-                    articlePost.article.Time = DateTime.Now;
+                    articlePost.article.Time = DateTime.UtcNow.AddHours(08); ;
 
                     articlePost.article.UserID = UserID;
                     #endregion
@@ -475,6 +475,10 @@ namespace postArticle.Controllers
                     if (articlePost.IsChecked == true)
                     {
                         articlePost.article.ArticleType = "是";
+                        var a=  db.UserManages.Find(UserID);
+                        a.ExpertExperience += 10;
+                        db.SaveChanges();
+
                     }
                     else
                     {

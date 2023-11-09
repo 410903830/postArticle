@@ -2,9 +2,12 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
+
+
+
 @{
     var article = Model.article;
-    ViewBag.Title = Model.article.Title;
+    ViewBag.Title = "文章";
     var messages = Model.messages;
     int UserID = 0;
     int ArticleID = article.ArticleID;
@@ -144,9 +147,9 @@
                 background-color: #2f863a;
             }
 
-    .btn.report:hover , .btn.copyButton:hover, .ms_report:hover, .btn.edit:hover, .btn.delete:hover{
+    .btn.report:hover, .btn.copyButton:hover, .ms_report:hover, .btn.edit:hover, .btn.delete:hover {
         color: #c0ffc8;
-        cursor: pointer; 
+        cursor: pointer;
     }
 
 
@@ -178,7 +181,7 @@
         border-radius: 4px;
     }
 
-    .report_alert button .report_cancel {
+        .report_alert button .report_cancel {
             position: absolute;
             bottom: 0;
         }
@@ -293,10 +296,10 @@
                 <button class="btn bi-star-fill" id="likeButton" data-article-id="@Model.article.ArticleID" style="border:none; background-color:#b2f094; border-radius:10px;">
                     @if (Model.IsLiked)
                     {
-        <span id="likeText">取消讚</span> }
-                        else
-                        {
-        <span id="likeText">讚</span>}
+                        <span id="likeText">取消讚</span> }
+                    else
+                    {
+                        <span id="likeText">讚</span>}
                     <span id="likeCount">@Model.article.Likes</span>
                 </button>
                 <button class="btn bi-star-fill report" style="border:none; background-color:#b2f094; border-radius:10px;">檢舉文章</button>
@@ -411,7 +414,7 @@
                         {
                             if (!getRM.Any(i => i.Message_ID == item.MessageID))
                             {
-                                <button class="ms_report" id="ms_report"  style="border:none; background-color:#ffdf57; border-radius:10px;" value="@item.MessageID">檢舉</button>
+                                <button class="ms_report" id="ms_report" style="border:none; background-color:#ffdf57; border-radius:10px;" value="@item.MessageID">檢舉</button>
                             }
                             else
                             {
@@ -453,7 +456,7 @@
 
             </div>
 
-         }
+        }
 
     </div>
 
@@ -467,30 +470,30 @@
     <div class="report_alert">
 
 
-        <form method="post" >
+        <form method="post">
 
             <div style="margin-left:5px;">
-            @Html.Label("不實文章")
-            <input type="checkbox" name="report" value="不實文章">
-                </div>
-            <div style="margin-left:5px;">
-            @Html.Label("不當發言")
-            <input type="checkbox" name="report" value="不當發言">
-                </div>
-            <div style="margin-left:5px;">
-            @Html.Label("謾罵字眼")
-            <input type="checkbox" name="report" value="謾罵字眼">
+                @Html.Label("不實文章")
+                <input type="checkbox" name="report" value="不實文章">
             </div>
             <div style="margin-left:5px;">
-            @Html.Label("其他")
+                @Html.Label("不當發言")
+                <input type="checkbox" name="report" value="不當發言">
             </div>
             <div style="margin-left:5px;">
-            @Html.TextArea("report_other", new { placeholder = "請輸入想要檢舉內容(限制字數50字)", maxlength = "50", @style = "width:200px; high:80px;; resize:none;" })
+                @Html.Label("謾罵字眼")
+                <input type="checkbox" name="report" value="謾罵字眼">
+            </div>
+            <div style="margin-left:5px;">
+                @Html.Label("其他")
+            </div>
+            <div style="margin-left:5px;">
+                @Html.TextArea("report_other", new { placeholder = "請輸入想要檢舉內容(限制字數50字)", maxlength = "50", @style = "width:200px; high:80px;; resize:none;" })
             </div>
 
             <div style="width:150px; margin:auto;">
-            <button class="report_cancel btn btn-danger">取消</button>
-            <button class="report_submit btn btn-success">送出</button>
+                <button class="report_cancel btn btn-danger">取消</button>
+                <button class="report_submit btn btn-success">送出</button>
             </div>
 
         </form>
@@ -538,10 +541,10 @@
                 <div style="width:100%; text-align:center;">
                     <button class="reportms_cancel btn btn-danger">取消</button>
                     <button class="reportms_submit btn btn-success">送出</button>
-                    </div>
-                    <span id="result"></span>
                 </div>
-</form>
+                <span id="result"></span>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -599,9 +602,9 @@
                 else {
                     alert("請輸入值");
                 }
-                
 
-              
+
+
             }
         });
     }
@@ -704,7 +707,7 @@
 
     //將檢舉文章內容整理成字串
      function report() {
-        
+
         var reportadd = document.getElementById("report_other");
         var txt = "";
 

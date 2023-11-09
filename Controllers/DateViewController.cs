@@ -31,7 +31,7 @@ namespace postArticle.Controllers
             {
 
                 //簽到
-                Checkin p = new Checkin { UserID = id, CheckInDate = DateTime.Now.Date, BoolCheckIn = 1 };
+                Checkin p = new Checkin { UserID = id, CheckInDate = DateTime.UtcNow.AddHours(08), BoolCheckIn = 1 };
                 db.Checkins.Add(p);
                 //加經驗
                 var experience = db.UserManages.Find(id);
@@ -51,7 +51,7 @@ namespace postArticle.Controllers
 
 
             //今天日期
-            var my_date = DateTime.Now;
+            var my_date = DateTime.UtcNow.AddHours(08);
 
             ViewBag.nowday567 = my_date;
 
@@ -62,7 +62,7 @@ namespace postArticle.Controllers
 
 
             //該月首天
-            DateTime FirstDay = DateTime.Now.AddDays(-DateTime.Now.Day + 1);
+            DateTime FirstDay = DateTime.UtcNow.AddHours(08).AddDays(-DateTime.UtcNow.AddHours(08).Day + 1);
             var week = FirstDay.DayOfWeek;
             //該月首日星期幾
             ViewBag.firstweekdate = week.ToString("d");
@@ -86,8 +86,8 @@ namespace postArticle.Controllers
             using (var db =new healingForestEntities())
             {
                 var product = from p in db.Checkins where p.UserID==id select p;
-                var my_day = DateTime.Now.ToString("dd");
-                var my_month = DateTime.Now.Month;
+                var my_day = DateTime.UtcNow.AddHours(08).ToString("dd");
+                var my_month = DateTime.UtcNow.AddHours(08).Month;
                 int count=1;
                 int[] array = new int[32];
  

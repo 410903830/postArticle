@@ -65,7 +65,7 @@ namespace postArticle.Controllers
 
                         string username = db.UserManages.Find(UserID).UserName;
                         string context = articleDetailsViewModel.Content;
-                        string date = DateTime.Now.ToString("G");
+                        string date = DateTime.UtcNow.AddHours(08).ToString("g");
 
                         ms.UserName = username;
                         ms.Context = context;
@@ -75,7 +75,7 @@ namespace postArticle.Controllers
 
                         message.ArticleID = (int)id;
                         message.Content = articleDetailsViewModel.Content;
-                        message.Time = DateTime.Now;
+                        message.Time = DateTime.UtcNow.AddHours(08);
                         message.UserID = UserID;
                         
 
